@@ -27,11 +27,13 @@ soup = BeautifulSoup(r.content, 'html5lib')
   
 whale_updates=[]  # a list to store q
 
-# find news title using <a class="pp-post-link"> 
-table = soup.find('a', attrs = {'class':'pp-post-link'})
+# find news title using <div class="pp-content-grid-inner pp-content-body clearfix"> 
+# table = soup.find('div', attrs = {'class':'pp-content-grid-inner pp-content-body clearfix'})
+# pp-content-post-data
+table = soup.find('div', attrs = {'class':'pp-content-post-data'})
 print(f'### table: {table} ###')
 
-"""
+
 for row in table.findAll('div',
                          attrs = {'class':'col-6 col-lg-3 text-center margin-30px-bottom sm-margin-30px-top'}):
     quote = {}
@@ -41,10 +43,15 @@ for row in table.findAll('div',
     quote['lines'] = row.img['alt'].split(" #")[0]
     quote['author'] = row.img['alt'].split(" #")[1]
     quotes.append(quote)
-  
+
+
+"""
+
 filename = 'inspirational_quotes.csv'
 with open(filename, 'w', newline='') as f:
     w = csv.DictWriter(f,['theme','url','img','lines','author'])
     w.writeheader()
     for quote in quotes:
-        w.writerow(quote)"""
+        w.writerow(quote)
+    
+"""
