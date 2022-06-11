@@ -6,3 +6,5 @@ daily whaler app sends daily email about whales overfishing on climate change
 python3 -m venv venv
 
 2. activate venv
+. venv/bin/activate                   
+
