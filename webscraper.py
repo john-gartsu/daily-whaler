@@ -7,16 +7,31 @@ https://www.geeksforgeeks.org/implementing-web-scraping-python-beautiful-soup/
 import requests
 from bs4 import BeautifulSoup
 import csv
-  
-URL = "http://www.values.com/inspirational-quotes"
+
+# 
+# url to send get request to and store in var url  
+# @feature request: store url in .env file 
+# store the request to url in variable r
+# 
+URL = "https://us.whales.org/news-blogs/news/"
 r = requests.get(URL)
-  
+
+# 
+# instantiate BeautifulSoup instance
+# r.content - get raw HTML content
+# html5lib - specify html parse to be used
+# store html parsed
+#   
 soup = BeautifulSoup(r.content, 'html5lib')
+# print(f'### soup: {soup} ###')
   
-quotes=[]  # a list to store quotes
-  
-table = soup.find('div', attrs = {'id':'all_quotes'})
-  
+whale_updates=[]  # a list to store q
+
+# find news title using <a class="pp-post-link"> 
+table = soup.find('a', attrs = {'class':'pp-post-link'})
+print(f'### table: {table} ###')
+
+"""
 for row in table.findAll('div',
                          attrs = {'class':'col-6 col-lg-3 text-center margin-30px-bottom sm-margin-30px-top'}):
     quote = {}
@@ -32,4 +47,4 @@ with open(filename, 'w', newline='') as f:
     w = csv.DictWriter(f,['theme','url','img','lines','author'])
     w.writeheader()
     for quote in quotes:
-        w.writerow(quote)
+        w.writerow(quote)"""
