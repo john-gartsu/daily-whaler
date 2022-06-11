@@ -30,13 +30,16 @@ whale_data_list=[]
 
 # find news title using <div class="pp-content-grid-inner pp-content-body clearfix"> 
 table = soup.find('div', attrs = {'class':'pp-content-grid-inner pp-content-body clearfix'})
-# pp-content-post-data
-# table = soup.find('div', attrs = {'class':'pp-content-post-data'})
 # print(f'### table: {table} ###')
 
+# span = soup.find("span", attrs= {"class":"pp-content-post-author"})
+# print(span)
 
-# for row in table.findAll('h3'):
-for row in table.findAll('div', attrs = {'class':'pp-content-post-data'}):
+
+# to do:
+# need to iterate over table var and parse span for author && date updated
+
+for row in table.findAll('div', attrs = {'class':'pp-content-post-data'},:
     # print(row)
     # create initial whale data dict
     whale_data_dict = {}
@@ -44,6 +47,13 @@ for row in table.findAll('div', attrs = {'class':'pp-content-post-data'}):
     whale_data_dict['title'] = row.h3.text
     # print(whale_data_dict['title'])
 
+    # author
+    # span = soup.find("span", attrs= {"class":"pp-content-post-author"})
+#    print(span)
+
+    # whale_data_dict['author'] = row.span.
+    print(row.span)
+    
     # example
     # quote = {}
     # quote['theme'] = row.h5.text
