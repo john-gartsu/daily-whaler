@@ -8,3 +8,5 @@ python3 -m venv venv
 2. activate venv
 . venv/bin/activate                   
 
+3. created emailerfeature, dev, and planning git branches
+
