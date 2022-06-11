@@ -1,5 +1,5 @@
 # daily-whaler
-daily whaler app sends daily email about whales overfishing on climate change
+daily whaler app sends daily email about new updates on whales if any on https://us.whales.org/news-blogs/news/
 
 ### Steps to create
 1. Create VENV
