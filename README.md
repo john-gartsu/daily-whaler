@@ -20,3 +20,6 @@ pip freeze > requirements.txt
 
 6. Tutotrial used for help on webscraper:
 https://www.geeksforgeeks.org/implementing-web-scraping-python-beautiful-soup/
+
+##### Helpful docs
+https://beautiful-soup-4.readthedocs.io/en/latest/

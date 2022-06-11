@@ -24,25 +24,34 @@ r = requests.get(URL)
 #   
 soup = BeautifulSoup(r.content, 'html5lib')
 # print(f'### soup: {soup} ###')
-  
-whale_updates=[]  # a list to store q
+
+# an empty list to store whale data to WRITE to 
+whale_data_list=[] 
 
 # find news title using <div class="pp-content-grid-inner pp-content-body clearfix"> 
-# table = soup.find('div', attrs = {'class':'pp-content-grid-inner pp-content-body clearfix'})
+table = soup.find('div', attrs = {'class':'pp-content-grid-inner pp-content-body clearfix'})
 # pp-content-post-data
-table = soup.find('div', attrs = {'class':'pp-content-post-data'})
-print(f'### table: {table} ###')
+# table = soup.find('div', attrs = {'class':'pp-content-post-data'})
+# print(f'### table: {table} ###')
 
 
-for row in table.findAll('div',
-                         attrs = {'class':'col-6 col-lg-3 text-center margin-30px-bottom sm-margin-30px-top'}):
-    quote = {}
-    quote['theme'] = row.h5.text
-    quote['url'] = row.a['href']
-    quote['img'] = row.img['src']
-    quote['lines'] = row.img['alt'].split(" #")[0]
-    quote['author'] = row.img['alt'].split(" #")[1]
-    quotes.append(quote)
+# for row in table.findAll('h3'):
+for row in table.findAll('div', attrs = {'class':'pp-content-post-data'}):
+    # print(row)
+    # create initial whale data dict
+    whale_data_dict = {}
+    # need way to get title
+    whale_data_dict['title'] = row.h3.text
+    # print(whale_data_dict['title'])
+
+    # example
+    # quote = {}
+    # quote['theme'] = row.h5.text
+    # quote['url'] = row.a['href']
+    # quote['img'] = row.img['src']
+    # quote['lines'] = row.img['alt'].split(" #")[0]
+    # quote['author'] = row.img['alt'].split(" #")[1]
+    # quotes.append(quote)
 
 
 """
